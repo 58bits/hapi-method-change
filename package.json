@@ -1,12 +1,12 @@
 {
-  "name": "hapi-method-override",
+  "name": "hapi-method-change",
   "description": "Hapi plugin for converting form post requests to put, delete or patch.",
   "version": "1.0.0",
   "author": "Anthony Bouch <tony@58bits.com> (http://www.58bits.com)",
   "repository":
   {
     "type": "git",
-    "url": "git://github.com/58bits/hapi-method-override"
+    "url": "git://github.com/58bits/hapi-method-change"
   },
   "main": "lib/index",
   "keywords": [
@@ -20,7 +20,7 @@
   "licenses": [
     {
       "type": "BSD",
-      "url": "http://github.com/58bits/hapi-method-override/raw/master/LICENSE"
+      "url": "http://github.com/58bits/hapi-method-change/raw/master/LICENSE"
     }
   ]
 }
