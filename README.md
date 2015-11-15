@@ -29,7 +29,7 @@ Also note that if you use this plugin in combination with the [Crumb](https://gi
       }
     });
 
-## Helper Form Builder - Handlebars
+## Handlebars Block Helper
 
 Here's a [Handlebars](http://handlebarsjs.com/) block helper that creates form blocks with the required querystring and hidden form field.
 (The helper helpers are based on [https://github.com/badsyntax/handlebars-form-helpers](https://github.com/badsyntax/handlebars-form-helpers)) 
