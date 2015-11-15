@@ -38,7 +38,6 @@ Here's a [Handlebars](http://handlebarsjs.com/) block helper that creates form b
 'use strict';
 
 var Qs            = require('querystring');
-var Handlebars    = require('handlebars');
 var MarkupHelper  = require('markupHelpers');
 
 var helperHidden  = MarkupHelper.helperHidden;
