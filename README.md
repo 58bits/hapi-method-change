@@ -31,7 +31,8 @@ Also note that if you use this plugin in combination with the [Crumb](https://gi
 
 ## Helper Form Builder - Handlebars
 
-Here's a helper [Handlebars](http://handlebarsjs.com/) form build, with library helpers derived from [https://github.com/badsyntax/handlebars-form-helpers](https://github.com/badsyntax/handlebars-form-helpers) 
+Here's a [Handlebars](http://handlebarsjs.com/) block helper that creates form blocks, with the required querystring and hidden form field.
+(The helper helpers are based on [https://github.com/badsyntax/handlebars-form-helpers](https://github.com/badsyntax/handlebars-form-helpers)) 
 
 ```javascript
 'use strict';
@@ -85,4 +86,24 @@ module.exports = function form(url, method, options) {
   }, options.hash), content);
 };
 
+```
+
+And here's how you use it, supplying action and method, and then any other attributes.
+
+```html
+{{#form '/your/route/' 'put' id="your-form" class="your-class"}}
+  <input type="text" name="name" id="name">
+  <input class="btn btn-ok" type="submit" value="OK">
+{{/form}}
+
+```
+
+Which produced this...
+
+```html
+<form action="/keys/95?_method=put" method="POST" id="your-form" class="your-class" >
+  <input name="_method" id="_method" value="put" type="hidden" />
+  <input type="text" name="name" id="name">
+  <input class="btn btn-ok" type="submit" value="OK">
+</form>
 ```
