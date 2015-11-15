@@ -8,7 +8,7 @@ Note: The request pipeline in [hapi](http://hapijs.com/) only allows incoming re
  
 The form therefore needs both a querystring value, and a hidden field for the requested method. 
 
-```
+```html
 <form action="/users/112?_method=delete" method="POST">
   <input name="_method" id="_method" value="delete" type="hidden" />
   ...
