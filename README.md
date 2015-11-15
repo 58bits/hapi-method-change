@@ -29,3 +29,60 @@ Also note that if you use this plugin in combination with the [Crumb](https://gi
       }
     });
 
+## Helper Form Builder - Handlebars
+
+Here's a helper [Handlebars](http://handlebarsjs.com/) form build, with library helpers derived from [https://github.com/badsyntax/handlebars-form-helpers](https://github.com/badsyntax/handlebars-form-helpers) 
+
+```javascript
+'use strict';
+
+var Qs            = require('querystring');
+var Handlebars    = require('handlebars');
+var MarkupHelper  = require('../../lib/markupHelpers');
+
+var helperHidden   = MarkupHelper.helperHidden;
+var createElement = MarkupHelper.createElement;
+var extend        = MarkupHelper.extend;
+
+let internals = {};
+
+internals.parseUrl = function parseUrl(path) {
+  if(path.indexOf('?') !== -1) {
+    let parts = path.split('?');
+    return {
+      path: parts[0],
+      qs: Qs.parse(parts[1])
+    }
+  } else {
+    return {
+      path: path,
+      qs: {}
+    }
+  }
+};
+
+internals.stringifyUrl = function stringifyUrl(parts) {
+  return parts.path + '?' + Qs.stringify(parts.qs);
+};
+
+module.exports = function form(url, method, options) {
+  method = method.toLowerCase();
+  let content = '';
+
+  if(method !== 'post') {
+    let parts = internals.parseUrl(url);
+    parts.qs._method = method;
+    url = internals.stringifyUrl(parts);
+    content = helperHidden('_method', method, {hash: {}});
+    content += options.fn(this);
+  } else {
+    content = options.fn(this);
+  }
+
+  return createElement('form', true, extend({
+    action: url,
+    method: 'POST'
+  }, options.hash), content);
+};
+
+```
