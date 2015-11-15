@@ -31,7 +31,7 @@ Also note that if you use this plugin in combination with the [Crumb](https://gi
 
 ## Helper Form Builder - Handlebars
 
-Here's a [Handlebars](http://handlebarsjs.com/) block helper that creates form blocks, with the required querystring and hidden form field.
+Here's a [Handlebars](http://handlebarsjs.com/) block helper that creates form blocks with the required querystring and hidden form field.
 (The helper helpers are based on [https://github.com/badsyntax/handlebars-form-helpers](https://github.com/badsyntax/handlebars-form-helpers)) 
 
 ```javascript
@@ -41,7 +41,7 @@ var Qs            = require('querystring');
 var Handlebars    = require('handlebars');
 var MarkupHelper  = require('../../lib/markupHelpers');
 
-var helperHidden   = MarkupHelper.helperHidden;
+var helperHidden  = MarkupHelper.helperHidden;
 var createElement = MarkupHelper.createElement;
 var extend        = MarkupHelper.extend;
 
@@ -88,20 +88,20 @@ module.exports = function form(url, method, options) {
 
 ```
 
-And here's how you use it, supplying action and method, and then any other attributes.
+And here's how you use it, supplying url and method along with any other attributes.
 
 ```html
-{{#form '/your/route/' 'put' id="your-form" class="your-class"}}
+{{#form '/your/route' 'put' id="your-form" class="your-class"}}
   <input type="text" name="name" id="name">
   <input class="btn btn-ok" type="submit" value="OK">
 {{/form}}
 
 ```
 
-Which produced this...
+Which produces this...
 
 ```html
-<form action="/keys/95?_method=put" method="POST" id="your-form" class="your-class" >
+<form action="/your/route?_method=put" method="POST" id="your-form" class="your-class" >
   <input name="_method" id="_method" value="put" type="hidden" />
   <input type="text" name="name" id="name">
   <input class="btn btn-ok" type="submit" value="OK">
